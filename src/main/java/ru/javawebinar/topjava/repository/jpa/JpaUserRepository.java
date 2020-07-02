@@ -11,7 +11,7 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-@Transactional(readOnly = true)
+//@Transactional(readOnly = true) - not needed - will be used on next lesson
 public class JpaUserRepository implements UserRepository {
 
 /*
