@@ -12,7 +12,7 @@ import java.time.LocalTime;
         @NamedQuery(name = Meal.DELETE, query = "DELETE FROM Meal m WHERE m.id=:id AND m.user=:user"),
 //        @NamedQuery(name = User.BY_EMAIL, query = "SELECT u FROM User u LEFT JOIN FETCH u.roles WHERE u.email=?1"),
         // SELECT * FROM meals WHERE user_id=? ORDER BY date_time DESC
-        @NamedQuery(name = Meal.ALL_SORTED, query = "SELECT meal FROM Meal meal WHERE meal.user=:user ORDER BY meal.dateTime DESC"),
+        @NamedQuery(name = Meal.ALL_SORTED, query = "SELECT meal FROM Meal meal WHERE meal.user.id=:userId ORDER BY meal.dateTime DESC"),
 })
 
 @Entity
@@ -20,7 +20,7 @@ import java.time.LocalTime;
 public class Meal extends AbstractBaseEntity {
 
     public static final String DELETE = "Meal.delete";
-//    public static final String BY_EMAIL = "Meal.getByEmail";
+    public static final String GET_BETWEEN = "Meal.getBetween";
     public static final String ALL_SORTED = "Meal.getAllSorted";
 
     @Column(name = "date_time", nullable = false, columnDefinition = "timestamp") // default value?
